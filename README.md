@@ -8,7 +8,13 @@ The goal is "reads human," not "passes a detector." The skill is explicit about 
 
 ## Install
 
-Clone into your Claude Code skills directory:
+With the [skills CLI](https://skills.sh) (works for Claude Code, Cursor, Codex, and others):
+
+```bash
+npx skills add ChrisThoma/de-ai-text
+```
+
+Or clone directly into your Claude Code skills directory:
 
 ```bash
 git clone https://github.com/ChrisThoma/de-ai-text.git ~/.claude/skills/de-ai-text
