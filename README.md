@@ -4,7 +4,7 @@ An agent skill for [Claude Code](https://claude.com/claude-code) that finds and 
 
 It uses Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) as its reference for what to look for: em-dash overuse, curly quotes, the AI-vocabulary cluster ("delve," "tapestry," "leverage," "robust"...), "not just X but Y" constructions, puffery, didactic disclaimers, manufactured triads, and more. The skill scans with grep recipes, judges each hit against legitimate domain usage, fixes the genuine tells without flattening the author's voice, and verifies with a re-scan.
 
-The aim is prose a knowledgeable human would plausibly have written; beating AI detectors is a non-goal. The skill is explicit about the two failure modes: shipping obvious tells, and over-correcting into bland mush.
+The aim is prose a knowledgeable human would plausibly have written. The skill is explicit about the two failure modes: shipping obvious tells, and over-correcting into bland mush.
 
 ## Install
 
