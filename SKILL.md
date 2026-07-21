@@ -1,6 +1,13 @@
 ---
 name: de-ai-text
-description: Use to audit and clean text so it reads human-written, not machine-generated. Covers what to look for (guided by Wikipedia's "Signs of AI writing"), how to scan for the markers, how to fix them without flattening a good voice, and how to verify. Works on any prose in any project (course text, docs, articles, READMEs). Trigger phrases: "de-AI this", "remove AI tells", "does this sound like AI", "AI speak", "de-slop", "make this read human", "check for signs of AI writing".
+description: >-
+  Use to audit and clean text so it reads human-written, not machine-generated.
+  Covers what to look for (guided by Wikipedia's "Signs of AI writing"), how to
+  scan for the markers, how to fix them without flattening a good voice, and how
+  to verify. Works on any prose in any project (course text, docs, articles,
+  READMEs). Trigger phrases: "de-AI this", "remove AI tells", "does this sound
+  like AI", "AI speak", "de-slop", "make this read human", "check for signs of
+  AI writing".
 ---
 
 # De-AI text
