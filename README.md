@@ -1,6 +1,6 @@
 # de-ai-text
 
-An agent skill for [Claude Code](https://claude.com/claude-code) that audits and cleans text so it reads human-written, not machine-generated.
+An agent skill for [Claude Code](https://claude.com/claude-code) that finds and removes the patterns that mark machine-generated prose, without flattening a voice that is already good.
 
 It uses Wikipedia's ["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) as its reference for what to look for: em-dash overuse, curly quotes, the AI-vocabulary cluster ("delve," "tapestry," "leverage," "robust"...), "not just X but Y" constructions, puffery, didactic disclaimers, manufactured triads, and more. The skill scans with grep recipes, judges each hit against legitimate domain usage, fixes the genuine tells without flattening the author's voice, and verifies with a re-scan.
 
