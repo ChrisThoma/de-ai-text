@@ -95,12 +95,26 @@ For the structural patterns (rule of three, bold-list density, "X, not Y"), eyeb
 
 ## Fix conventions
 
-Preserve meaning; vary the replacement so you do not turn every dash into a colon.
+Preserve meaning. For a dash in prose, first ask what the dash is doing; the best fix is usually a small rewrite of the sentence, and swapping in replacement punctuation is the fallback for when a rewrite would change the meaning or rhythm.
 
-- **Em-dash for an aside (paired `— ... —`)** → parentheses.
-- **Em-dash joining two independent clauses** → semicolon, or split into two sentences.
+- **Em-dash for an aside (paired `— ... —`)** → fold a short aside into the sentence; use parentheses if it is truly parenthetical; delete it if it carries nothing.
+- **Em-dash joining two independent clauses** → usually two sentences, reordered if the second clause was the real point. Where the clauses are causally linked, say so ("because," "so"). Reserve the semicolon for short, tightly coupled clauses; a page of semicolons is its own tell.
 - **Em-dash before a summary/expansion** → colon.
-- **Em-dash for a quick clause break** → comma.
+- **Em-dash for a quick clause break** → comma, or drop the break and read the sentence again.
+- **Quota check:** if more than about a quarter of your dash fixes came out as semicolons, the pass was mechanical substitution. Go back and restructure those sentences.
+
+Rewrites beat punctuation swaps:
+
+> Dash: `The cache is warm — the second call returns instantly.`
+> Swap: `The cache is warm; the second call returns instantly.`
+> Rewrite: `Because the cache is warm, the second call returns instantly.`
+
+> Dash: `She shipped the fix — nobody noticed the outage.`
+> Swap: `She shipped the fix; nobody noticed the outage.`
+> Rewrite: `She shipped the fix before anybody noticed the outage.`
+
+Mechanical patterns that genuinely map 1:1:
+
 - **`# Heading — Subtitle`** → `:`; if the heading already has a colon, wrap the subtitle in parens.
 - **`**Bold lead** — explanation`** → `**Bold lead:** explanation`.
 - **Rubric/label `**1 — Novice:**`** → `**1 (Novice):**`.
@@ -110,11 +124,12 @@ Preserve meaning; vary the replacement so you do not turn every dash into a colo
 - **Didactic disclaimer** → delete the lead-in and keep the fact.
 - **Manufactured triad** → cut to the two that matter, or add real content for the third.
 
-**Bulk em-dash pass (many files):** grep the dashes, then write a small script mapping exact `old -> new` string pairs per file (`.replace` is global, so duplicates map fine), plus a `globals` list for repeating patterns like `("** — ", "**: ")`. Run the specific paired-aside cases *before* the globals so `** — ` asides get consumed first. Print a MISS for any pair that did not match, then re-grep to confirm zero. Watch sentence-initial capitalization when a clause break becomes a sentence break.
+**Bulk em-dash pass (many files):** the script approach biases toward 1:1 swaps, so reserve it for the mechanical patterns (`** — `, heading subtitles, rubric labels) and hand-rewrite the prose dashes, recording each rewrite as its own exact pair. Grep the dashes, then write a small script mapping exact `old -> new` string pairs per file (`.replace` is global, so duplicates map fine), plus a `globals` list for repeating patterns like `("** — ", "**: ")`. Run the specific paired-aside cases *before* the globals so `** — ` asides get consumed first. Print a MISS for any pair that did not match, then re-grep to confirm zero. Watch sentence-initial capitalization when a clause break becomes a sentence break.
 
 ## Verify before declaring done
 
 - Re-run scans 1-5 above; high-signal markers should be zero (or only intended diagram lines).
+- Compare semicolon counts before and after (`grep -c ";"` on the touched files). A jump means dashes were laundered into semicolons; restructure those sentences.
 - If you touched anything structured, re-validate it (JSON parses, links resolve, code still runs).
 - Read two or three passages aloud. If a sentence sounds like marketing copy or a press release, rewrite it.
 - Confirm you did not delete real content, real domain terms, or the teaching/author voice while removing tells.

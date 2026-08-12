@@ -36,7 +36,7 @@ Or just ask in natural language; the skill triggers on phrases like "de-AI this,
 
 1. **Scan** the target with grep recipes; get counts, not vibes.
 2. **Judge** each hit: genuine tell, or legitimate domain usage? ("Leverage" as a bargaining chip stays; "leverage synergies" goes.)
-3. **Fix** with meaning-preserving conventions (em-dash asides become parentheses, clause joins become semicolons, AI-vocabulary words become the plain word that means it).
+3. **Fix** with meaning-preserving rewrites (em-dash asides fold into the sentence or become parentheses, clause joins get restructured or split into sentences, AI-vocabulary words become the plain word that means it).
 4. **Verify** by re-scanning to zero and re-reading passages aloud.
 5. **Report** counts before and after, what changed, and what was deliberately kept.
 
