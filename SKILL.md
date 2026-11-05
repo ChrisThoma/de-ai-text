@@ -64,16 +64,16 @@ When unsure whether a word is a tell, read the sentence: if removing or swapping
 
 ## Scan recipes
 
-Set the target, then run. These print matches so you can judge.
+Set the target, then run. These print matches so you can judge. They avoid `grep -P`, which the grep that ships with macOS does not have. Run them in bash or zsh, since scan 7 uses `$'...'` quoting.
 
 ```bash
 TARGET=path/to/dir-or-file      # a dir, a file, or "."
 
 # 1. Em-dashes in prose (excluding arrows/box-drawing)
-grep -rn -- "—" "$TARGET" | grep -v "→\|↔\|←" | grep -vP "[─━│┌┐└┘├┤┬┴┼]"
+grep -rn -- "—" "$TARGET" | grep -v "→\|↔\|←" | grep -vE "─|━|│|┌|┐|└|┘|├|┤|┬|┴|┼"
 
 # 2. Curly quotes / apostrophes
-grep -rnP "[\x{2018}\x{2019}\x{201C}\x{201D}]" "$TARGET"
+grep -rnE "‘|’|“|”" "$TARGET"
 
 # 3. AI-vocabulary cluster
 grep -rniE "delve|tapestr|testament|boasts|vibrant|pivotal|crucial|underscore|meticulous|intricat|foster|showcas|leverag|robust|seamless|nestled|renowned|groundbreaking|game[- ]chang|cutting[- ]edge|in today'?s|fast[- ]paced|navigat(e|ing) the (complex|landscape)" "$TARGET"
@@ -88,7 +88,7 @@ grep -rniE "worth noting|important to note|in conclusion|in summary|needless to 
 grep -rniE "stands as|a testament|vital role|crucial role|rich (history|tradition|tapestry|cultural)|experts (say|argue|agree)|studies show|in the realm of" "$TARGET"
 
 # 7. Emoji (excluding intended decorative marks like ★ and functional arrows)
-grep -rnP "[\x{1F000}-\x{1FAFF}\x{2600}-\x{27BF}]" "$TARGET" | grep -v "★\|→\|↔\|←"
+LC_ALL=C grep -rnE $'\xF0\x9F|\xE2[\x98-\x9E]' "$TARGET" | grep -v "★\|→\|↔\|←"
 ```
 
 For the structural patterns (rule of three, bold-list density, "X, not Y"), eyeball rather than gate on a count; they are voice, not defects.
